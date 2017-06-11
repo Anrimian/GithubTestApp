@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">GithubTestApp</string>
     <string name="close">Закрыть</string>
+    <string name="unexpected_error">Необработанная ошибка</string>
+    <string name="internal_app_error">Внутренная ошибка приложения</string>
+    <string name="server_timeout_error">Превышено время соединения с сервером</string>
+    <string name="server_connection_find_error">Не удалось соединиться с сервером</string>
+    <string name="unexpected_server_error_message">Необработанная ошибка при выполении запроса</string>
+    <string name="dont_have_permission">Нет разрешения</string>
+    <string name="fake_error">Фэйковая ошибка для тестов</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="try_again">Попробовать снова</string>
+    <string name="empty_data">Данных нет</string>
+    <string name="sign_in">Авторизация</string>
+    <string name="enter">Войти</string>
+    <string name="done">Готово!</string>
+    <string name="empty_login_error">Логин не может быть пустым</string>
+    <string name="empty_password_error">Пароль не может быть пустым</string>
 </resources>

@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHolder {
 
-    private static final String BASE_URL = "";//TODO set base url
+    private static final String BASE_URL = "https://api.github.com/";
 
     private GithubApi githubApi;
 

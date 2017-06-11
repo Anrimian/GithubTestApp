@@ -3,7 +3,7 @@ package com.github.anrimian.githubtestapp.dagger.modules;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.github.anrimian.githubtestapp.dataset.Preferences;
+import com.github.anrimian.githubtestapp.dataset.preferences.Preferences;
 
 import javax.inject.Singleton;
 

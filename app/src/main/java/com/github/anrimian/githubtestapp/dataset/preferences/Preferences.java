@@ -1,4 +1,4 @@
-package com.github.anrimian.githubtestapp.dataset;
+package com.github.anrimian.githubtestapp.dataset.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
