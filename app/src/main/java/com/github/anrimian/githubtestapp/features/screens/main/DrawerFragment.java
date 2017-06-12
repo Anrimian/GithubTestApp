@@ -60,7 +60,10 @@ public class DrawerFragment extends MvpAppCompatFragment {
         activity.setSupportActionBar(toolbar);
         ActionBar actionBar = activity.getSupportActionBar();
         if (actionBar != null) {
+            actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
 
         navigationView.setNavigationItemSelectedListener(item -> {
@@ -75,6 +78,7 @@ public class DrawerFragment extends MvpAppCompatFragment {
         });
 
         drawerToggle = new ActionBarDrawerToggle(getActivity(), drawer, R.string.open_drawer, R.string.close_drawer);
+        drawerToggle.setDrawerIndicatorEnabled(true);
         drawer.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
 
             @Override
@@ -84,11 +88,11 @@ public class DrawerFragment extends MvpAppCompatFragment {
                     switch (itemIdToStart) {
                         case R.id.menu_profile: {
                             startFragment(new ProfileFragment());
-                            return;
+                            break;
                         }
                         case R.id.menu_users: {
                             startFragment(new UsersFragment());
-                            return;
+                            break;
                         }
                     }
                     itemIdToStart = NO_ITEM_TO_START;

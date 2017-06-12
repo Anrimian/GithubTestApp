@@ -63,6 +63,7 @@ public class SignInFragment extends MvpAppCompatFragment implements SignInView {
             return true;
         });
 
+
         etPassword.setOnEditorActionListener((v, actionId, event) -> {
             signIn();
             return true;
