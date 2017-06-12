@@ -83,7 +83,7 @@ public class UserInfoResponse {
 
     @SerializedName("company")
     @Expose
-    private Object company;
+    private String company;
 
     @SerializedName("blog")
     @Expose
@@ -95,7 +95,7 @@ public class UserInfoResponse {
 
     @SerializedName("email")
     @Expose
-    private Object email;
+    private String email;
 
     @SerializedName("hireable")
     @Expose
@@ -229,7 +229,7 @@ public class UserInfoResponse {
         return name;
     }
 
-    public Object getCompany() {
+    public String getCompany() {
         return company;
     }
 
@@ -241,7 +241,7 @@ public class UserInfoResponse {
         return location;
     }
 
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 

@@ -17,4 +17,8 @@
     <string name="done">Готово!</string>
     <string name="empty_login_error">Логин не может быть пустым</string>
     <string name="empty_password_error">Пароль не может быть пустым</string>
+    <string name="users">Пользователи</string>
+    <string name="profile">Профиль</string>
+    <string name="open_drawer">Открыть боковое меню</string>
+    <string name="close_drawer">Закрыть блоковое меню</string>
 </resources>

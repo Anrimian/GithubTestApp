@@ -19,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        goToLoginScreen();
+        if (savedInstanceState == null) {
+            goToLoginScreen();
+        }
     }
 
     private void goToLoginScreen() {
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private void startFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
+                .setCustomAnimations(R.anim.alpha_appear_animation, R.anim.alpha_disappear_animation)
                 .replace(R.id.main_activity_container, fragment)
                 .commit();
     }

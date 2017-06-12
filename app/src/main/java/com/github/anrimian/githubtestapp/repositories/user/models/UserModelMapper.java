@@ -16,14 +16,14 @@ public interface UserModelMapper {
     @Mappings({
             @Mapping(target = "id", source = "id"),
             @Mapping(target = "login", source = "login"),
-            @Mapping(target = "avatar", source = "avatar_url"),
+            @Mapping(target = "avatar", source = "avatarUrl"),
             @Mapping(target = "name", source = "name"),
             @Mapping(target = "company", source = "company"),
             @Mapping(target = "email", source = "email"),
-            @Mapping(target = "repositoriesUrl", source = "repos_url"),
-            @Mapping(target = "privateGistsCount", source = "private_gists"),
-            @Mapping(target = "privateRepositoriesCount", source = "total_private_repos"),
-            @Mapping(target = "ownedPrivateRepositoriesCount", source = "owned_private_repos")
+            @Mapping(target = "repositoriesUrl", source = "reposUrl"),
+            @Mapping(target = "privateGistsCount", source = "privateGists"),
+            @Mapping(target = "privateRepositoriesCount", source = "totalPrivateRepos"),
+            @Mapping(target = "ownedPrivateRepositoriesCount", source = "ownedPrivateRepos")
     })
     UserInfoModel mapUserInfoResponse(UserInfoResponse userInfoResponse);
 }

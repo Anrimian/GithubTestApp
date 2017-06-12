@@ -40,6 +40,6 @@ public class SignInPresenter extends MvpPresenter<SignInView> {
 
     private void onSignInSuccess() {
         getViewState().showSuccess();
-        //getViewState().goToMainScreen();
+        getViewState().goToMainScreen();
     }
 }
