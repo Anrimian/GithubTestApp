@@ -1,4 +1,4 @@
-package com.github.anrimian.githubtestapp.dataset.retrofit.responses.auth;
+package com.github.anrimian.githubtestapp.dataset.retrofit.responses.user;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

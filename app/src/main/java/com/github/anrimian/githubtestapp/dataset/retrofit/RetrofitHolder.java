@@ -2,6 +2,9 @@ package com.github.anrimian.githubtestapp.dataset.retrofit;
 
 import com.github.anrimian.githubtestapp.dataset.retrofit.api.GithubApi;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -15,6 +18,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitHolder {
 
     private static final String BASE_URL = "https://api.github.com/";
+    public static final String CLIENT_ID = "24aebaa9503482c29956";
+    public static final String CLIENT_SECRET = "c7ab10f0afc816de258bd51ec86de870beeb2a7f";
+    public static final String APP_NOTE = "github_test_app";
+    public static final List<String> GITHUB_SCOPES = new ArrayList<>();
+
+    static {
+        GITHUB_SCOPES.add("user");
+    }
+
 
     private GithubApi githubApi;
 

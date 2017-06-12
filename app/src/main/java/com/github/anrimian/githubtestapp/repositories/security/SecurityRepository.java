@@ -1,6 +1,6 @@
 package com.github.anrimian.githubtestapp.repositories.security;
 
-import com.github.anrimian.githubtestapp.repositories.security.models.UserInfoModel;
+import com.github.anrimian.githubtestapp.repositories.security.models.AuthorizationInfo;
 
 import io.reactivex.Single;
 
@@ -9,5 +9,5 @@ import io.reactivex.Single;
  */
 
 public interface SecurityRepository {
-    Single<UserInfoModel> signIn(String username, String password);
+    Single<AuthorizationInfo> signIn(String username, String password);
 }
