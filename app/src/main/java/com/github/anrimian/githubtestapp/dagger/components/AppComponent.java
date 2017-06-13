@@ -6,6 +6,8 @@ import com.github.anrimian.githubtestapp.dagger.modules.BusinessModule;
 import com.github.anrimian.githubtestapp.dagger.modules.DataModule;
 import com.github.anrimian.githubtestapp.features.screens.auth.SignInPresenter;
 import com.github.anrimian.githubtestapp.features.screens.auth.business.SignInInteractorImpl;
+import com.github.anrimian.githubtestapp.features.screens.main.profile.ProfilePresenter;
+import com.github.anrimian.githubtestapp.features.screens.main.profile.business.ProfileInteractorImpl;
 import com.github.anrimian.githubtestapp.repositories.preferences.PreferencesRepositoryImpl;
 import com.github.anrimian.githubtestapp.repositories.security.SecurityRepositoryImpl;
 import com.github.anrimian.githubtestapp.repositories.user.UserRepositoryImpl;
@@ -27,4 +29,8 @@ public interface AppComponent {
     void inject(UserRepositoryImpl userRepository);
 
     void inject(PreferencesRepositoryImpl preferencesRepository);
+
+    void inject(ProfileInteractorImpl profileInteractor);
+
+    void inject(ProfilePresenter profilePresenter);
 }
