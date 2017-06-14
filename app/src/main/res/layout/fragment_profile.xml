@@ -49,6 +49,17 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_login" />
 
         <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            tools:text="email"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar" />
+
+        <TextView
             android:id="@+id/tv_company_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,8 +67,8 @@
             android:textSize="16sp"
             android:layout_marginTop="8dp"
             android:text="@string/organization"
-            app:layout_constraintLeft_toLeftOf="@+id/iv_avatar"
-            app:layout_constraintTop_toBottomOf="@+id/iv_avatar" />
+            app:layout_constraintLeft_toLeftOf="@+id/tv_email"
+            app:layout_constraintTop_toBottomOf="@+id/tv_email" />
 
         <TextView
             android:id="@+id/tv_company"
@@ -72,17 +83,6 @@
             app:layout_constraintLeft_toRightOf="@+id/tv_company_title"
             app:layout_constraintBottom_toBottomOf="@+id/tv_company_title" />
 
-        <TextView
-            android:id="@+id/tv_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?android:attr/textColorSecondary"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"
-            tools:text="email"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_company_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_company_title" />
-
         <LinearLayout
             android:id="@+id/btn_repositories"
             android:layout_width="wrap_content"
@@ -93,8 +93,8 @@
             android:paddingEnd="8dp"
             android:paddingBottom="8dp"
             android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_email"
-            app:layout_constraintTop_toBottomOf="@+id/tv_email"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_company_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_company_title"
             tools:ignore="RtlSymmetry">
 
             <TextView

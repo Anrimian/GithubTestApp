@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 
 import com.github.anrimian.githubtestapp.repositories.preferences.PreferencesRepository;
 import com.github.anrimian.githubtestapp.repositories.preferences.PreferencesRepositoryImpl;
+import com.github.anrimian.githubtestapp.repositories.repo.RepoRepository;
+import com.github.anrimian.githubtestapp.repositories.repo.RepoRepositoryImpl;
 import com.github.anrimian.githubtestapp.repositories.security.SecurityRepository;
 import com.github.anrimian.githubtestapp.repositories.security.SecurityRepositoryImpl;
 import com.github.anrimian.githubtestapp.repositories.user.UserRepository;
@@ -39,4 +41,12 @@ public class DataModule {
     PreferencesRepository providePreferencesRepository() {
         return new PreferencesRepositoryImpl();
     }
+
+    @Provides
+    @NonNull
+    RepoRepository provideRepoRepository() {
+        return new RepoRepositoryImpl();
+    }
+
+
 }

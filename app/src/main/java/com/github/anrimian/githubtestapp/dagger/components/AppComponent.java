@@ -9,6 +9,7 @@ import com.github.anrimian.githubtestapp.features.screens.auth.business.SignInIn
 import com.github.anrimian.githubtestapp.features.screens.main.profile.ProfilePresenter;
 import com.github.anrimian.githubtestapp.features.screens.main.profile.business.ProfileInteractorImpl;
 import com.github.anrimian.githubtestapp.repositories.preferences.PreferencesRepositoryImpl;
+import com.github.anrimian.githubtestapp.repositories.repo.RepoRepositoryImpl;
 import com.github.anrimian.githubtestapp.repositories.security.SecurityRepositoryImpl;
 import com.github.anrimian.githubtestapp.repositories.user.UserRepositoryImpl;
 
@@ -33,4 +34,6 @@ public interface AppComponent {
     void inject(ProfileInteractorImpl profileInteractor);
 
     void inject(ProfilePresenter profilePresenter);
+
+    void inject(RepoRepositoryImpl repoRepository);
 }
