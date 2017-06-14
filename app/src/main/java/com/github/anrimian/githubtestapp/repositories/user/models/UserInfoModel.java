@@ -15,10 +15,18 @@ public class UserInfoModel {
     private String email;
     private String repositoriesUrl;
 
+    private int publicRepoCount;
     private int privateGistsCount;
     private int privateRepositoriesCount;
     private int ownedPrivateRepositoriesCount;
 
+    public int getPublicRepoCount() {
+        return publicRepoCount;
+    }
+
+    public void setPublicRepoCount(int publicRepoCount) {
+        this.publicRepoCount = publicRepoCount;
+    }
 
     public long getId() {
         return id;

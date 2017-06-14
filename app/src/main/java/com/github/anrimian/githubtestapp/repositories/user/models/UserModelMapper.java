@@ -23,7 +23,8 @@ public interface UserModelMapper {
             @Mapping(target = "repositoriesUrl", source = "reposUrl"),
             @Mapping(target = "privateGistsCount", source = "privateGists"),
             @Mapping(target = "privateRepositoriesCount", source = "totalPrivateRepos"),
-            @Mapping(target = "ownedPrivateRepositoriesCount", source = "ownedPrivateRepos")
+            @Mapping(target = "ownedPrivateRepositoriesCount", source = "ownedPrivateRepos"),
+            @Mapping(target = "publicRepoCount", source = "publicRepos")
     })
     UserInfoModel mapUserInfoResponse(UserInfoResponse userInfoResponse);
 }

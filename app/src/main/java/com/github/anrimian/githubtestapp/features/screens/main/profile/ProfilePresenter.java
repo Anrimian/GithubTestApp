@@ -32,7 +32,7 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
         loadProfileInfo();
     }
 
-    private void loadProfileInfo() {
+    void loadProfileInfo() {
         getViewState().showProgress();
         interactor.getUserInfo()
                 .subscribeOn(Schedulers.io())
@@ -47,5 +47,9 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
 
     private void onProfileLoaded(UserInfoModel userInfoModel) {
         getViewState().showProfile(userInfoModel);
+    }
+
+    void goToRepoList() {
+
     }
 }

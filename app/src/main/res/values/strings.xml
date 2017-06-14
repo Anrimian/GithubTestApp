@@ -21,4 +21,9 @@
     <string name="profile">Профиль</string>
     <string name="open_drawer">Открыть боковое меню</string>
     <string name="close_drawer">Закрыть блоковое меню</string>
+    <string name="organization">Организация:</string>
+    <string name="repositories">Репозиториев:</string>
+    <string name="gists">Gists:</string>
+    <string name="private_repo">Приватных репозиториев:</string>
+    <string name="owned_private_repo">Собственных приватных репозиториев:</string>
 </resources>
