@@ -11,4 +11,6 @@ import io.reactivex.Single;
 public interface ProfileRepository {
 
     Single<UserInfoModel> getProfileInfo(String token);
+
+    Single<UserInfoModel> updateProfileInfo(String token, UserInfoModel userInfoModel);
 }

@@ -44,6 +44,4 @@ public class UserRepositoryImpl implements UserRepository {
         return usersApi.getUserInfo(userName)
                 .map(userModelMapper::mapUserInfoResponse);
     }
-
-
 }

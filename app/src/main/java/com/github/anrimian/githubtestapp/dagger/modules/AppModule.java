@@ -25,13 +25,13 @@ public class AppModule {
 
     @Provides
     @NonNull
-    public Context provideAppContext() {
+    Context provideAppContext() {
         return appContext;
     }
 
     @Provides
     @Singleton
-    public Preferences providePreferences()  {
+    Preferences providePreferences()  {
         return new Preferences(appContext);
     }
 }

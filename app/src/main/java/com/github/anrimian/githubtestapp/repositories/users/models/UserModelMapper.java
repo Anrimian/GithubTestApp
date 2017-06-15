@@ -1,5 +1,6 @@
 package com.github.anrimian.githubtestapp.repositories.users.models;
 
+import com.github.anrimian.githubtestapp.dataset.retrofit.requests.UpdateProfileRequest;
 import com.github.anrimian.githubtestapp.dataset.retrofit.responses.search.UserSearchInfoResponse;
 import com.github.anrimian.githubtestapp.dataset.retrofit.responses.user.UserInfoResponse;
 
@@ -38,5 +39,5 @@ public interface UserModelMapper {
     @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
     List<UserSearchResult> mapUserSearchResponseList(List<UserSearchInfoResponse> response);
 
-
+    UpdateProfileRequest mapUserInfoToUpdateRequest(UserInfoModel userInfoModel);
 }

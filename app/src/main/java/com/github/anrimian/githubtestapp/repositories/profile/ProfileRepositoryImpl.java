@@ -30,6 +30,13 @@ public class ProfileRepositoryImpl implements ProfileRepository {
     public Single<UserInfoModel> getProfileInfo(String token) {
         return profileApi.getProfileInfo("token " + token)
                 .map(userModelMapper::mapUserInfoResponse);
+    }
 
+    @Override
+    public Single<UserInfoModel> updateProfileInfo(String token, UserInfoModel userInfoModel) {
+        return Single.fromCallable(() -> userInfoModel)
+                .map(userModelMapper::mapUserInfoToUpdateRequest)
+                .flatMap(request -> profileApi.updateProfileInfo("token " + token, request))
+                .map(userModelMapper::mapUserInfoResponse);
     }
 }

@@ -25,19 +25,19 @@ public class ApiModule {
 
     @Provides
     @NonNull
-    public ProfileApi getProfileApi() {
+    ProfileApi getProfileApi() {
         return retrofitHolder.getProfileApi();
     }
 
     @Provides
     @NonNull
-    public RepoApi getRepoApi() {
+    RepoApi getRepoApi() {
         return retrofitHolder.getRepoApi();
     }
 
     @Provides
     @NonNull
-    public UsersApi getUsersApi() {
+    UsersApi getUsersApi() {
         return retrofitHolder.getUsersApi();
     }
 }

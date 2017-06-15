@@ -19,13 +19,13 @@ public class BusinessModule {
 
     @Provides
     @NonNull
-    public SignInInteractor provideSignInInteractor() {
+    SignInInteractor provideSignInInteractor() {
         return new SignInInteractorImpl();
     }
 
     @Provides
     @NonNull
-    public ProfileInteractor provideProfileInteractor() {
+    ProfileInteractor provideProfileInteractor() {
         return new ProfileInteractorImpl();
     }
 }
