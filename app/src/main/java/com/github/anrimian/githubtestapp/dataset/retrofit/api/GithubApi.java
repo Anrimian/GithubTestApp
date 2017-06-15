@@ -3,6 +3,7 @@ package com.github.anrimian.githubtestapp.dataset.retrofit.api;
 import com.github.anrimian.githubtestapp.dataset.retrofit.requests.AuthRequest;
 import com.github.anrimian.githubtestapp.dataset.retrofit.responses.auth.AuthResponse;
 import com.github.anrimian.githubtestapp.dataset.retrofit.responses.repo.RepoResponse;
+import com.github.anrimian.githubtestapp.dataset.retrofit.responses.search.SearchUsersResultResponse;
 import com.github.anrimian.githubtestapp.dataset.retrofit.responses.user.UserInfoResponse;
 
 import java.util.List;
@@ -30,4 +31,13 @@ public interface GithubApi {
     @GET("users/{username}/repos")
     Single<List<RepoResponse>> getRepoList(@Header("Authorization") String credentials,
                                            @Query("username") String userName);
+
+    /**
+     *
+     * @param page pagination starting from 1 (!)
+     */
+    @GET("search/users")
+    Single<SearchUsersResultResponse> searchUsers(@Query("q") String query,
+                                                  @Query("page") int page,
+                                                  @Query("per_page") int perPage);
 }

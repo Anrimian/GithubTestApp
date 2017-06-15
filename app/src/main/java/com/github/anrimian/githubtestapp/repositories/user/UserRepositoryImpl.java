@@ -2,10 +2,14 @@ package com.github.anrimian.githubtestapp.repositories.user;
 
 import com.github.anrimian.githubtestapp.dagger.Components;
 import com.github.anrimian.githubtestapp.dataset.retrofit.api.GithubApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.responses.search.SearchUsersResultResponse;
 import com.github.anrimian.githubtestapp.repositories.user.models.UserInfoModel;
 import com.github.anrimian.githubtestapp.repositories.user.models.UserModelMapper;
+import com.github.anrimian.githubtestapp.repositories.user.models.UserSearchResult;
 
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -16,6 +20,8 @@ import io.reactivex.Single;
  */
 
 public class UserRepositoryImpl implements UserRepository {
+
+    private static final int PAGE_SIZE = 20;
 
     @Inject
     GithubApi githubApi;
@@ -31,5 +37,12 @@ public class UserRepositoryImpl implements UserRepository {
         return githubApi.getUserInfo("token " + token)
                 .map(userModelMapper::mapUserInfoResponse);
 
+    }
+
+    @Override
+    public Single<List<UserSearchResult>> searchUsers(String query, int page) {
+        return githubApi.searchUsers(query, page, PAGE_SIZE)
+                .map(SearchUsersResultResponse::getItems)
+                .map(userModelMapper::mapUserSearchResponseList);
     }
 }

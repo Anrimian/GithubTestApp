@@ -1,10 +1,15 @@
 package com.github.anrimian.githubtestapp.repositories.user.models;
 
+import com.github.anrimian.githubtestapp.dataset.retrofit.responses.search.UserSearchInfoResponse;
 import com.github.anrimian.githubtestapp.dataset.retrofit.responses.user.UserInfoResponse;
 
+import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.NullValueMappingStrategy;
+
+import java.util.List;
 
 /**
  * Created on 11.06.2017.
@@ -27,4 +32,11 @@ public interface UserModelMapper {
             @Mapping(target = "publicRepoCount", source = "publicRepos")
     })
     UserInfoModel mapUserInfoResponse(UserInfoResponse userInfoResponse);
+
+    UserSearchResult mapUserSearchResponseList(UserSearchInfoResponse response);
+
+    @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
+    List<UserSearchResult> mapUserSearchResponseList(List<UserSearchInfoResponse> response);
+
+
 }
