@@ -1,11 +1,11 @@
-package com.github.anrimian.githubtestapp.repositories.user;
+package com.github.anrimian.githubtestapp.repositories.users;
 
 import com.github.anrimian.githubtestapp.dagger.Components;
-import com.github.anrimian.githubtestapp.dataset.retrofit.api.GithubApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.api.UsersApi;
 import com.github.anrimian.githubtestapp.dataset.retrofit.responses.search.SearchUsersResultResponse;
-import com.github.anrimian.githubtestapp.repositories.user.models.UserInfoModel;
-import com.github.anrimian.githubtestapp.repositories.user.models.UserModelMapper;
-import com.github.anrimian.githubtestapp.repositories.user.models.UserSearchResult;
+import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
+import com.github.anrimian.githubtestapp.repositories.users.models.UserModelMapper;
+import com.github.anrimian.githubtestapp.repositories.users.models.UserSearchResult;
 
 import org.mapstruct.factory.Mappers;
 
@@ -24,7 +24,7 @@ public class UserRepositoryImpl implements UserRepository {
     private static final int PAGE_SIZE = 20;
 
     @Inject
-    GithubApi githubApi;
+    UsersApi usersApi;
 
     private UserModelMapper userModelMapper = Mappers.getMapper(UserModelMapper.class);
 
@@ -33,16 +33,17 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Single<UserInfoModel> getUserInfo(String token) {
-        return githubApi.getUserInfo("token " + token)
-                .map(userModelMapper::mapUserInfoResponse);
-
-    }
-
-    @Override
     public Single<List<UserSearchResult>> searchUsers(String query, int page) {
-        return githubApi.searchUsers(query, page, PAGE_SIZE)
+        return usersApi.searchUsers(query, page, PAGE_SIZE)
                 .map(SearchUsersResultResponse::getItems)
                 .map(userModelMapper::mapUserSearchResponseList);
     }
+
+    @Override
+    public Single<UserInfoModel> getUserInfo(String userName) {
+        return usersApi.getUserInfo(userName)
+                .map(userModelMapper::mapUserInfoResponse);
+    }
+
+
 }

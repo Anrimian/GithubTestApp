@@ -4,7 +4,7 @@ import android.util.Base64;
 
 import com.github.anrimian.githubtestapp.dagger.Components;
 import com.github.anrimian.githubtestapp.dataset.retrofit.RetrofitHolder;
-import com.github.anrimian.githubtestapp.dataset.retrofit.api.GithubApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.api.ProfileApi;
 import com.github.anrimian.githubtestapp.dataset.retrofit.requests.AuthRequest;
 import com.github.anrimian.githubtestapp.repositories.security.models.AuthModelMapper;
 import com.github.anrimian.githubtestapp.repositories.security.models.AuthorizationInfo;
@@ -22,7 +22,7 @@ import io.reactivex.Single;
 public class SecurityRepositoryImpl implements SecurityRepository {
 
     @Inject
-    GithubApi githubApi;
+    ProfileApi profileApi;
 
     private AuthModelMapper authModelMapper = Mappers.getMapper(AuthModelMapper.class);
 
@@ -40,7 +40,7 @@ public class SecurityRepositoryImpl implements SecurityRepository {
                 RetrofitHolder.CLIENT_SECRET,
                 RetrofitHolder.APP_NOTE,
                 RetrofitHolder.GITHUB_SCOPES);
-        return githubApi.createAuthorization(encode, authRequest)
+        return profileApi.createAuthorization(encode, authRequest)
                 .map(authModelMapper::mapAuthResponse);
     }
 }

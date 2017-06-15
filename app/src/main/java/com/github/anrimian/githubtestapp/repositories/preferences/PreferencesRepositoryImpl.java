@@ -4,7 +4,7 @@ import android.support.annotation.Nullable;
 
 import com.github.anrimian.githubtestapp.dagger.Components;
 import com.github.anrimian.githubtestapp.dataset.preferences.Preferences;
-import com.github.anrimian.githubtestapp.repositories.user.models.UserInfoModel;
+import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
 
 import javax.inject.Inject;
 

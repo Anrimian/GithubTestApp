@@ -6,7 +6,7 @@ import com.github.anrimian.githubtestapp.features.screens.auth.business.validato
 import com.github.anrimian.githubtestapp.repositories.preferences.PreferencesRepository;
 import com.github.anrimian.githubtestapp.repositories.security.SecurityRepository;
 import com.github.anrimian.githubtestapp.repositories.security.models.AuthorizationInfo;
-import com.github.anrimian.githubtestapp.repositories.user.UserRepository;
+import com.github.anrimian.githubtestapp.repositories.users.UserRepository;
 
 import javax.inject.Inject;
 
@@ -41,7 +41,7 @@ public class SignInInteractorImpl implements SignInInteractor {
                 .flatMap(o -> securityRepository.signIn(login, password))
                 .map(AuthorizationInfo::getToken)
                 .doOnSuccess(preferencesRepository::setToken)
-                //.flatMap(userRepository::getUserInfo)//TODO first implement user info saving
+                //.flatMap(userRepository::getProfileInfo)//TODO first implement user info saving
                 .toCompletable();
     }
 }

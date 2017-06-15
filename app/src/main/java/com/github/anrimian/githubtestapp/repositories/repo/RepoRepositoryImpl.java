@@ -1,7 +1,7 @@
 package com.github.anrimian.githubtestapp.repositories.repo;
 
 import com.github.anrimian.githubtestapp.dagger.Components;
-import com.github.anrimian.githubtestapp.dataset.retrofit.api.GithubApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.api.RepoApi;
 import com.github.anrimian.githubtestapp.repositories.repo.models.RepoInfoModel;
 import com.github.anrimian.githubtestapp.repositories.repo.models.RepoModelMapper;
 
@@ -20,7 +20,7 @@ import io.reactivex.Single;
 public class RepoRepositoryImpl implements RepoRepository {
 
     @Inject
-    GithubApi githubApi;
+    RepoApi repoApi;
 
     private RepoModelMapper repoModelMapper = Mappers.getMapper(RepoModelMapper.class);
 
@@ -30,7 +30,7 @@ public class RepoRepositoryImpl implements RepoRepository {
 
     @Override
     public Single<List<RepoInfoModel>> getRepoInfoList(String userName, String token) {
-        return githubApi.getRepoList("token " + token, userName)
+        return repoApi.getRepoList("token " + token, userName)
                 .map(repoModelMapper::mapUserInfoResponseList);
     }
 }

@@ -1,4 +1,4 @@
-package com.github.anrimian.githubtestapp.repositories.user.models;
+package com.github.anrimian.githubtestapp.repositories.users.models;
 
 /**
  * Created on 15.6.17. It is awesome java class.

@@ -1,4 +1,4 @@
-package com.github.anrimian.githubtestapp.repositories.user.models;
+package com.github.anrimian.githubtestapp.repositories.users.models;
 
 /**
  * Created on 11.06.2017.

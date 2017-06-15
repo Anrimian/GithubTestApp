@@ -1,6 +1,8 @@
 package com.github.anrimian.githubtestapp.dataset.retrofit;
 
-import com.github.anrimian.githubtestapp.dataset.retrofit.api.GithubApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.api.ProfileApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.api.RepoApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.api.UsersApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,9 @@ public class RetrofitHolder {
     }
 
 
-    private GithubApi githubApi;
+    private ProfileApi profileApi;
+    private RepoApi repoApi;
+    private UsersApi usersApi;
 
     public RetrofitHolder() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -37,7 +41,9 @@ public class RetrofitHolder {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(createHttpClient())
                 .build();
-        githubApi = retrofit.create(GithubApi.class);
+        profileApi = retrofit.create(ProfileApi.class);
+        repoApi = retrofit.create(RepoApi.class);
+        usersApi = retrofit.create(UsersApi.class);
     }
 
     private OkHttpClient createHttpClient() {
@@ -52,7 +58,15 @@ public class RetrofitHolder {
         return httpLoggingInterceptor;
     }
 
-    public GithubApi getGithubApi() {
-        return githubApi;
+    public ProfileApi getProfileApi() {
+        return profileApi;
+    }
+
+    public RepoApi getRepoApi() {
+        return repoApi;
+    }
+
+    public UsersApi getUsersApi() {
+        return usersApi;
     }
 }

@@ -4,12 +4,14 @@ import android.support.annotation.NonNull;
 
 import com.github.anrimian.githubtestapp.repositories.preferences.PreferencesRepository;
 import com.github.anrimian.githubtestapp.repositories.preferences.PreferencesRepositoryImpl;
+import com.github.anrimian.githubtestapp.repositories.profile.ProfileRepository;
+import com.github.anrimian.githubtestapp.repositories.profile.ProfileRepositoryImpl;
 import com.github.anrimian.githubtestapp.repositories.repo.RepoRepository;
 import com.github.anrimian.githubtestapp.repositories.repo.RepoRepositoryImpl;
 import com.github.anrimian.githubtestapp.repositories.security.SecurityRepository;
 import com.github.anrimian.githubtestapp.repositories.security.SecurityRepositoryImpl;
-import com.github.anrimian.githubtestapp.repositories.user.UserRepository;
-import com.github.anrimian.githubtestapp.repositories.user.UserRepositoryImpl;
+import com.github.anrimian.githubtestapp.repositories.users.UserRepository;
+import com.github.anrimian.githubtestapp.repositories.users.UserRepositoryImpl;
 
 import javax.inject.Singleton;
 
@@ -46,6 +48,12 @@ public class DataModule {
     @NonNull
     RepoRepository provideRepoRepository() {
         return new RepoRepositoryImpl();
+    }
+
+    @Provides
+    @NonNull
+    ProfileRepository provideProfileRepository() {
+        return new ProfileRepositoryImpl();
     }
 
 

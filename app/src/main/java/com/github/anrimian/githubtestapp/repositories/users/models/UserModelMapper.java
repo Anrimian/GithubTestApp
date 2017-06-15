@@ -1,4 +1,4 @@
-package com.github.anrimian.githubtestapp.repositories.user.models;
+package com.github.anrimian.githubtestapp.repositories.users.models;
 
 import com.github.anrimian.githubtestapp.dataset.retrofit.responses.search.UserSearchInfoResponse;
 import com.github.anrimian.githubtestapp.dataset.retrofit.responses.user.UserInfoResponse;

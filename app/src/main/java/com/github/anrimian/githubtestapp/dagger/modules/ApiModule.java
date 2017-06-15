@@ -3,7 +3,9 @@ package com.github.anrimian.githubtestapp.dagger.modules;
 import android.support.annotation.NonNull;
 
 import com.github.anrimian.githubtestapp.dataset.retrofit.RetrofitHolder;
-import com.github.anrimian.githubtestapp.dataset.retrofit.api.GithubApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.api.ProfileApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.api.RepoApi;
+import com.github.anrimian.githubtestapp.dataset.retrofit.api.UsersApi;
 
 import dagger.Module;
 import dagger.Provides;
@@ -23,7 +25,19 @@ public class ApiModule {
 
     @Provides
     @NonNull
-    public GithubApi getAuthApi() {
-        return retrofitHolder.getGithubApi();
+    public ProfileApi getProfileApi() {
+        return retrofitHolder.getProfileApi();
+    }
+
+    @Provides
+    @NonNull
+    public RepoApi getRepoApi() {
+        return retrofitHolder.getRepoApi();
+    }
+
+    @Provides
+    @NonNull
+    public UsersApi getUsersApi() {
+        return retrofitHolder.getUsersApi();
     }
 }

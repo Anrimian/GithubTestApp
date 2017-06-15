@@ -1,6 +1,6 @@
 package com.github.anrimian.githubtestapp.features.screens.main.profile.business;
 
-import com.github.anrimian.githubtestapp.repositories.user.models.UserInfoModel;
+import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
 
 import io.reactivex.Single;
 
@@ -10,5 +10,5 @@ import io.reactivex.Single;
 
 public interface ProfileInteractor {
 
-    Single<UserInfoModel> getUserInfo();
+    Single<UserInfoModel> getProfileInfo();
 }

@@ -13,7 +13,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.bumptech.glide.Glide;
 import com.github.anrimian.githubtestapp.R;
-import com.github.anrimian.githubtestapp.repositories.user.models.UserInfoModel;
+import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
 import com.github.anrimian.githubtestapp.utils.errors.ErrorInfo;
 import com.github.anrimian.githubtestapp.utils.views.binders.ProgressViewBinder;
 

@@ -4,7 +4,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.github.anrimian.githubtestapp.dagger.Components;
 import com.github.anrimian.githubtestapp.features.screens.main.profile.business.ProfileInteractor;
-import com.github.anrimian.githubtestapp.repositories.user.models.UserInfoModel;
+import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
 import com.github.anrimian.githubtestapp.utils.errors.ErrorInfo;
 
 import javax.inject.Inject;
@@ -34,7 +34,7 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
 
     void loadProfileInfo() {
         getViewState().showProgress();
-        interactor.getUserInfo()
+        interactor.getProfileInfo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onProfileLoaded, this::onProfileLoadingError);

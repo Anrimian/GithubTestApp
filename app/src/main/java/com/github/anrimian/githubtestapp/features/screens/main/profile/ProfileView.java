@@ -2,7 +2,7 @@ package com.github.anrimian.githubtestapp.features.screens.main.profile;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
-import com.github.anrimian.githubtestapp.repositories.user.models.UserInfoModel;
+import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
 import com.github.anrimian.githubtestapp.utils.errors.ErrorInfo;
 import com.github.anrimian.githubtestapp.utils.moxy.AddToEndSingleByTagStateStrategy;
 
