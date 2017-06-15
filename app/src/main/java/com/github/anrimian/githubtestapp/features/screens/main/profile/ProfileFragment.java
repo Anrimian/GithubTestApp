@@ -1,5 +1,6 @@
 package com.github.anrimian.githubtestapp.features.screens.main.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.bumptech.glide.Glide;
 import com.github.anrimian.githubtestapp.R;
+import com.github.anrimian.githubtestapp.features.screens.main.repo.RepoListActivity;
 import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
 import com.github.anrimian.githubtestapp.utils.errors.ErrorInfo;
 import com.github.anrimian.githubtestapp.utils.views.binders.ProgressViewBinder;
@@ -130,6 +132,12 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
         tvGistsCount.setText(String.valueOf(userInfoModel.getPrivateGistsCount()));
         tvPrivateRepoCount.setText(String.valueOf(userInfoModel.getPrivateRepositoriesCount()));
         tvOwnedPrivateRepoCount.setText(String.valueOf(userInfoModel.getOwnedPrivateRepositoriesCount()));
+    }
 
+    @Override
+    public void goToRepoListScreen(String login) {
+        Intent intent = new Intent(getContext(), RepoListActivity.class);
+        intent.putExtra(RepoListActivity.USER_NAME, login);
+        startActivity(intent);
     }
 }

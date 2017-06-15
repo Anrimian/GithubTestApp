@@ -27,6 +27,8 @@
 
         </activity>
 
+        <activity android:name=".features.screens.main.repo.RepoListActivity"/>
+
     </application>
 
 </manifest>

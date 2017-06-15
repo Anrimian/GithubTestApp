@@ -6,6 +6,8 @@ import com.github.anrimian.githubtestapp.features.screens.auth.business.SignInIn
 import com.github.anrimian.githubtestapp.features.screens.auth.business.SignInInteractorImpl;
 import com.github.anrimian.githubtestapp.features.screens.main.profile.business.ProfileInteractor;
 import com.github.anrimian.githubtestapp.features.screens.main.profile.business.ProfileInteractorImpl;
+import com.github.anrimian.githubtestapp.features.screens.main.repo.business.RepoListInteractor;
+import com.github.anrimian.githubtestapp.features.screens.main.repo.business.RepoListInteractorImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -27,5 +29,11 @@ public class BusinessModule {
     @NonNull
     ProfileInteractor provideProfileInteractor() {
         return new ProfileInteractorImpl();
+    }
+
+    @Provides
+    @NonNull
+    RepoListInteractor provideRepoListInteractor() {
+        return new RepoListInteractorImpl();
     }
 }

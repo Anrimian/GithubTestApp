@@ -1,6 +1,7 @@
 package com.github.anrimian.githubtestapp.repositories.preferences;
 
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import com.github.anrimian.githubtestapp.dagger.Components;
 import com.github.anrimian.githubtestapp.dataset.preferences.Preferences;
@@ -17,19 +18,27 @@ public class PreferencesRepositoryImpl implements PreferencesRepository {
     @Inject
     Preferences preferences;
 
+    private String token;
+
     public PreferencesRepositoryImpl() {
         Components.getAppComponent().inject(this);
     }
 
     @Override
     public void setToken(String token) {
-        preferences.setToken(token);
+        if (!TextUtils.equals(this.token, token)) {
+            this.token = token;
+            preferences.setToken(token);
+        }
     }
 
     @Nullable
     @Override
     public String getToken() {
-        return preferences.getToken();
+        if (token == null) {
+            token = preferences.getToken();
+        }
+        return token;
     }
 
     @Override

@@ -26,4 +26,5 @@
     <string name="gists">Gists:</string>
     <string name="private_repo">Приватных репозиториев:</string>
     <string name="owned_private_repo">Собственных приватных репозиториев:</string>
+    <string name="description">Описание:</string>
 </resources>

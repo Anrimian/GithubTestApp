@@ -8,5 +8,6 @@
     android:minHeight="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
     android:elevation="4dp"
+    app:theme="@style/ToolbarStyle"
     app:titleTextColor="?android:attr/textColorPrimaryInverse"
     tools:targetApi="lollipop" />

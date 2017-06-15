@@ -7,7 +7,7 @@ import java.util.List;
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Query;
+import retrofit2.http.Path;
 
 /**
  * Created on 15.6.17. It is awesome java class.
@@ -17,5 +17,5 @@ public interface RepoApi {
 
     @GET("users/{username}/repos")
     Single<List<RepoResponse>> getRepoList(@Header("Authorization") String credentials,
-                                           @Query("username") String userName);
+                                           @Path("username") String userName);
 }

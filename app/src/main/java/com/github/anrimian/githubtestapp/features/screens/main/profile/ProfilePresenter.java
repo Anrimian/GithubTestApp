@@ -22,6 +22,8 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
     @Inject
     ProfileInteractor interactor;
 
+    private UserInfoModel userInfoModel;
+
     public ProfilePresenter() {
         Components.getAppComponent().inject(this);
     }
@@ -46,10 +48,11 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
     }
 
     private void onProfileLoaded(UserInfoModel userInfoModel) {
+        this.userInfoModel = userInfoModel;
         getViewState().showProfile(userInfoModel);
     }
 
     void goToRepoList() {
-
+        getViewState().goToRepoListScreen(userInfoModel.getLogin());
     }
 }

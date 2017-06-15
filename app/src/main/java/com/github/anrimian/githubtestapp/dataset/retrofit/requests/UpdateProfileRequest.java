@@ -17,25 +17,9 @@ public class UpdateProfileRequest {
     @Expose
     private String email;
 
-    @SerializedName("blog")
-    @Expose
-    private String blog;
-
     @SerializedName("company")
     @Expose
     private String company;
-
-    @SerializedName("location")
-    @Expose
-    private String location;
-
-    @SerializedName("hireable")
-    @Expose
-    private Boolean hireable;
-
-    @SerializedName("bio")
-    @Expose
-    private String bio;
 
     public void setName(String name) {
         this.name = name;
@@ -45,23 +29,7 @@ public class UpdateProfileRequest {
         this.email = email;
     }
 
-    public void setBlog(String blog) {
-        this.blog = blog;
-    }
-
     public void setCompany(String company) {
         this.company = company;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setHireable(Boolean hireable) {
-        this.hireable = hireable;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
     }
 }

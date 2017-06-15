@@ -1,17 +1,18 @@
-package com.github.anrimian.githubtestapp.features.screens.main.profile;
+package com.github.anrimian.githubtestapp.features.screens.main.repo;
 
 import com.arellomobile.mvp.MvpView;
-import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
-import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
+import com.github.anrimian.githubtestapp.repositories.repo.models.RepoInfoModel;
 import com.github.anrimian.githubtestapp.utils.errors.ErrorInfo;
 import com.github.anrimian.githubtestapp.utils.moxy.AddToEndSingleByTagStateStrategy;
+
+import java.util.List;
 
 /**
  * Created on 13.6.17. It is awesome java class.
  */
 
-public interface ProfileView extends MvpView {
+public interface RepoListView extends MvpView {
 
     String LOADING_STATE = "loading_state";
 
@@ -22,8 +23,5 @@ public interface ProfileView extends MvpView {
     void showError(ErrorInfo errorInfo);
 
     @StateStrategyType(value = AddToEndSingleByTagStateStrategy.class, tag = LOADING_STATE)
-    void showProfile(UserInfoModel userInfoModel);
-
-    @StateStrategyType(OneExecutionStateStrategy.class)
-    void goToRepoListScreen(String login);
+    void showRepoList(List<RepoInfoModel> repos);
 }
