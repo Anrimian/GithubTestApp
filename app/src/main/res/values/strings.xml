@@ -27,4 +27,8 @@
     <string name="private_repo">Приватных репозиториев:</string>
     <string name="owned_private_repo">Собственных приватных репозиториев:</string>
     <string name="description">Описание:</string>
+    <string name="search">Поиск</string>
+    <string name="repo_not_found">Репозитории не найдены</string>
+    <string name="time_to_search">Тут мы ищем пользователей :)</string>
+    <string name="user_avatar">Изображение пользователя</string>
 </resources>

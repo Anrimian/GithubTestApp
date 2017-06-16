@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.PresenterType;
 import com.bumptech.glide.Glide;
 import com.github.anrimian.githubtestapp.R;
 import com.github.anrimian.githubtestapp.features.screens.main.repo.RepoListActivity;
@@ -28,7 +29,7 @@ import butterknife.ButterKnife;
 
 public class ProfileFragment extends MvpAppCompatFragment implements ProfileView {
 
-    @InjectPresenter
+    @InjectPresenter(type = PresenterType.GLOBAL)
     ProfilePresenter presenter;
 
     @BindView(R.id.profile_content_container)

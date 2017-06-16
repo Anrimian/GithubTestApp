@@ -8,6 +8,8 @@ import com.github.anrimian.githubtestapp.features.screens.main.profile.business.
 import com.github.anrimian.githubtestapp.features.screens.main.profile.business.ProfileInteractorImpl;
 import com.github.anrimian.githubtestapp.features.screens.main.repo.business.RepoListInteractor;
 import com.github.anrimian.githubtestapp.features.screens.main.repo.business.RepoListInteractorImpl;
+import com.github.anrimian.githubtestapp.features.screens.main.users.business.UsersInteractor;
+import com.github.anrimian.githubtestapp.features.screens.main.users.business.UsersInteractorImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -36,4 +38,11 @@ public class BusinessModule {
     RepoListInteractor provideRepoListInteractor() {
         return new RepoListInteractorImpl();
     }
+
+    @Provides
+    @NonNull
+    UsersInteractor provideUsersInteractor() {
+        return new UsersInteractorImpl();
+    }
+
 }

@@ -21,8 +21,6 @@ import io.reactivex.Single;
 
 public class UserRepositoryImpl implements UserRepository {
 
-    private static final int PAGE_SIZE = 20;
-
     @Inject
     UsersApi usersApi;
 
@@ -33,8 +31,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Single<List<UserSearchResult>> searchUsers(String query, int page) {
-        return usersApi.searchUsers(query, page, PAGE_SIZE)
+    public Single<List<UserSearchResult>> searchUsers(String query, int page, int pageSize) {
+        return usersApi.searchUsers(query, page, pageSize)
                 .map(SearchUsersResultResponse::getItems)
                 .map(userModelMapper::mapUserSearchResponseList);
     }

@@ -18,7 +18,16 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                tools:src="@drawable/ic_github_circle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:contentDescription="@string/user_avatar" />
 
             <TextView
                 android:id="@+id/tv_name"
@@ -26,31 +35,12 @@
                 android:layout_height="wrap_content"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 tools:text="name"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"/>
-
-            <TextView
-                android:id="@+id/tv_description_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textColor="?android:attr/textColorSecondary"
-                android:textSize="16sp"
-                android:text="@string/description"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name"
-                app:layout_constraintLeft_toLeftOf="@+id/tv_name"/>
-
-            <TextView
-                android:id="@+id/tv_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="14sp"
-                tools:text="textColorPrimarytextColorPrimarytextColorPrimarytextColorPrimarytextColorPrimarytextColorPrimarytextColorPrimarytextColorPrimarytextColorPrimarytextColorPrimary"
-                app:layout_constraintTop_toBottomOf="@+id/tv_description_title"
-                app:layout_constraintLeft_toLeftOf="@+id/tv_description_title"/>
+                app:layout_constraintTop_toTopOf="@+id/iv_avatar"
+                app:layout_constraintLeft_toRightOf="@+id/iv_avatar"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_avatar" />
 
         </android.support.constraint.ConstraintLayout>
 

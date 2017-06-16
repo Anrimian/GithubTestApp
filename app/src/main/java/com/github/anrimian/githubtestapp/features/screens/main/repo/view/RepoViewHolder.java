@@ -27,13 +27,16 @@ class RepoViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_description_title)
     TextView tvDescriptionTitle;
 
+    @BindView(R.id.card_view)
+    View cardView;
+
     private RepoInfoModel repoInfoModel;
 
     RepoViewHolder(View itemView, OnItemClickListener<RepoInfoModel> onItemClickListener) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         if (onItemClickListener != null) {
-            itemView.setOnClickListener(v -> onItemClickListener.onItemClick(repoInfoModel));
+            cardView.setOnClickListener(v -> onItemClickListener.onItemClick(repoInfoModel));
         }
     }
 
