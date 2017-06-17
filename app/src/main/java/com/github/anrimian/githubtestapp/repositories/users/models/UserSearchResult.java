@@ -25,4 +25,20 @@ public class UserSearchResult {
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserSearchResult)) return false;
+
+        UserSearchResult result = (UserSearchResult) o;
+
+        return login.equals(result.login);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return login.hashCode();
+    }
 }

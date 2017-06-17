@@ -19,18 +19,34 @@ public interface UsersView extends MvpView {
     String LOADING_STATE = "loading_state";
 
     @StateStrategyType(value = SingleStateByTagStrategy.class, tag = LOADING_STATE)
-    void showProgress();
+    void showStartState();
 
     @StateStrategyType(value = SingleStateByTagStrategy.class, tag = LOADING_STATE)
-    void showError(ErrorInfo errorInfo);
+    void showProgress(boolean refreshing, boolean empty);
 
     @StateStrategyType(value = SingleStateByTagStrategy.class, tag = LOADING_STATE)
     void showComplete();
+
+    @StateStrategyType(value = SingleStateByTagStrategy.class, tag = LOADING_STATE)
+    void showEmptyState();
+
+    @StateStrategyType(value = SingleStateByTagStrategy.class, tag = LOADING_STATE)
+    void showEndList();
+
+    @StateStrategyType(value = SingleStateByTagStrategy.class, tag = LOADING_STATE)
+    void showFooterStateMessage(ErrorInfo errorInfo);
+
+    @StateStrategyType(value = SingleStateByTagStrategy.class, tag = LOADING_STATE)
+    void showStateError(ErrorInfo errorInfo);
 
     @StateStrategyType(AddToEndSingleStrategy.class)
     void bindUsersList(List<UserSearchResult> results);
 
     @StateStrategyType(OneExecutionStateStrategy.class)
-    void updateList();
+    void updateList(boolean animate);
+
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void showMessageError(ErrorInfo errorInfo);
+
 
 }

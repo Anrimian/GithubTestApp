@@ -31,8 +31,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Single<List<UserSearchResult>> searchUsers(String query, int page, int pageSize) {
-        return usersApi.searchUsers(query, page, pageSize)
+    public Single<List<UserSearchResult>> searchUsers(String query, int page, int pageSize, String token) {
+        return usersApi.searchUsers(query, page, pageSize, token)
                 .map(SearchUsersResultResponse::getItems)
                 .map(userModelMapper::mapUserSearchResponseList);
     }

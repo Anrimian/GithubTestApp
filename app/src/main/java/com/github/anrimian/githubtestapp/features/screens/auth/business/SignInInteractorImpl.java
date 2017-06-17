@@ -40,6 +40,7 @@ public class SignInInteractorImpl implements SignInInteractor {
                 .flatMap(o -> passwordValidator.validate(password))
                 .flatMap(o -> securityRepository.signIn(login, password))
                 .map(AuthorizationInfo::getToken)
+                .map(token -> "token " + token)
                 .doOnSuccess(preferencesRepository::setToken)
                 //.flatMap(userRepository::getProfileInfo)//TODO first implement user info saving
                 .toCompletable();

@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:text="@string/enter"
         android:textSize="18sp"
-        android:textColor="?attr/colorAccent"
+        android:textColor="@drawable/btn_text_color"
         android:padding="12dp"
         android:foreground="?attr/selectableItemBackground"
         android:layout_marginTop="@dimen/activity_vertical_margin"

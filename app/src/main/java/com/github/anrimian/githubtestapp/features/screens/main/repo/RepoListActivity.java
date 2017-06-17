@@ -101,6 +101,11 @@ public class RepoListActivity extends MvpAppCompatActivity implements RepoListVi
         recyclerView.setAdapter(repoListAdapter);
     }
 
+    @Override
+    public void showEmptyState() {
+        progressViewBinder.showMessage(R.string.no_repo, false);
+    }
+
     private void goToRepoScreen(RepoInfoModel repoInfoModel) {
         String url = repoInfoModel.getHtmlUrl();
         Intent intent = new Intent(Intent.ACTION_VIEW);

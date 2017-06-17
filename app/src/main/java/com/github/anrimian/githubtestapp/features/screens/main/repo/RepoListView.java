@@ -24,4 +24,8 @@ public interface RepoListView extends MvpView {
 
     @StateStrategyType(value = SingleStateByTagStrategy.class, tag = LOADING_STATE)
     void showRepoList(List<RepoInfoModel> repos);
+
+    @StateStrategyType(value = SingleStateByTagStrategy.class, tag = LOADING_STATE)
+    void showEmptyState();
+
 }

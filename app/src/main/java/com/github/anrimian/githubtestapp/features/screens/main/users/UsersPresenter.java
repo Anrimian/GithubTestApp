@@ -4,7 +4,6 @@ import android.text.TextUtils;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.github.anrimian.githubtestapp.R;
 import com.github.anrimian.githubtestapp.dagger.Components;
 import com.github.anrimian.githubtestapp.features.screens.main.users.business.UsersInteractor;
 import com.github.anrimian.githubtestapp.repositories.users.models.UserSearchResult;
@@ -28,9 +27,10 @@ import io.reactivex.schedulers.Schedulers;
 @InjectViewState
 public class UsersPresenter extends MvpPresenter<UsersView> {
 
+    private static final int START_PAGE = 1;
     private static final int PAGE_SIZE = 20;
 
-    private static final int SEARCH_DELAY = 250;
+    private static final int SEARCH_DELAY = 750;
 
     @Inject
     UsersInteractor usersInteractor;
@@ -43,6 +43,10 @@ public class UsersPresenter extends MvpPresenter<UsersView> {
     private String searchQuery;
 
     private boolean refreshing;
+    private boolean swipeRefreshing;
+    private boolean waitForLoading = false;
+
+    private int page = START_PAGE;
 
     public UsersPresenter() {
         Components.getAppComponent().inject(this);
@@ -52,32 +56,84 @@ public class UsersPresenter extends MvpPresenter<UsersView> {
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
         getViewState().bindUsersList(searchResults);
+        getViewState().showStartState();
+    }
+
+    void startRefreshing() {
+        if (TextUtils.isEmpty(searchQuery)) {
+            if (searchResults.isEmpty()) {
+                getViewState().showStartState();
+            } else {
+                getViewState().showComplete();
+            }
+        } else {
+            swipeRefreshing = true;
+            startLoading(true);
+        }
     }
 
     void startLoading(boolean refresh) {
-        getViewState().showProgress();
-        refreshing = refresh;
-        loadingDisposable = usersInteractor.loadUsers(searchQuery, 0, PAGE_SIZE)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn((AndroidSchedulers.mainThread()))
-                .subscribe(this::onLoadingCompete, this::onLoadingError);
+        if (!TextUtils.isEmpty(searchQuery)) {
+            waitForLoading = false;
+            refreshing = refresh;
+            getViewState().showProgress(swipeRefreshing, searchResults.isEmpty());
+            loadingDisposable = usersInteractor.loadUsers(searchQuery, getCurrentPage(), PAGE_SIZE)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn((AndroidSchedulers.mainThread()))
+                    .subscribe(this::onLoadingCompete, this::onLoadingError);
+        }
+    }
+
+    private int getCurrentPage() {
+        if (refreshing) {
+            return START_PAGE;
+        }
+        return page;
     }
 
     private void onLoadingError(Throwable throwable) {
         ErrorInfo errorInfo = new ErrorInfo(throwable);
-        getViewState().showError(errorInfo);
-        refreshing = false;
-    }
-
-    private void onLoadingCompete(List<UserSearchResult> repos) {
-        searchResults.addAll(repos);
-        if (repos.isEmpty()) {
-            getViewState().showError(new ErrorInfo(R.string.repo_not_found));
+        if (searchResults.isEmpty()) {
+            getViewState().showStateError(errorInfo);
+        } else if (refreshing) {
+            getViewState().showMessageError(errorInfo);
         } else {
-            getViewState().showComplete();
-            getViewState().updateList();
+            getViewState().showFooterStateMessage(errorInfo);
         }
         refreshing = false;
+        swipeRefreshing = false;
+    }
+
+    private void onLoadingCompete(List<UserSearchResult> newResults) {
+        if (refreshing) {
+            searchResults.clear();
+            page = START_PAGE;
+        }
+
+        boolean animate = searchResults.isEmpty() && !newResults.isEmpty();
+
+        newResults.stream()
+                .filter(result -> !searchResults.contains(result))
+                .forEach(searchResults::add);
+
+        if (searchResults.isEmpty()) {
+            getViewState().showEmptyState();
+        } else {
+            if (newResults.isEmpty()) {
+                getViewState().showEndList();
+            } else {
+                page++;
+                if (page == START_PAGE + 1) {
+                    startLoading(false);
+                } else {
+                    waitForLoading = true;
+                    getViewState().showComplete();
+                }
+            }
+        }
+        getViewState().updateList(animate);
+        refreshing = false;
+        swipeRefreshing = false;
     }
 
     void startSearchWithDelay(String searchQuery) {
@@ -90,14 +146,25 @@ public class UsersPresenter extends MvpPresenter<UsersView> {
     }
 
     void startSearch(String searchQuery) {
-        if (!TextUtils.isEmpty(searchQuery)) {
-            this.searchQuery = searchQuery;
-            if (loadingDisposable != null) {
-                loadingDisposable.dispose();
-            }
-            searchResults.clear();
-            getViewState().updateList();
+        this.searchQuery = searchQuery;
+        if (loadingDisposable != null) {
+            loadingDisposable.dispose();
+        }
+        searchResults.clear();
+        getViewState().updateList(false);
+
+        if (TextUtils.isEmpty(searchQuery)) {
+            getViewState().showStartState();
+        } else {
             startLoading(true);
         }
+    }
+
+    String getSearchQuery() {
+        return searchQuery;
+    }
+
+    boolean isWaitForLoading() {
+        return waitForLoading;
     }
 }

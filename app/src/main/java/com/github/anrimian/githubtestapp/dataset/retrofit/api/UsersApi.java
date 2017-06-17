@@ -5,6 +5,7 @@ import com.github.anrimian.githubtestapp.dataset.retrofit.responses.user.UserInf
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Query;
 
 /**
@@ -20,7 +21,8 @@ public interface UsersApi {
     @GET("search/users")
     Single<SearchUsersResultResponse> searchUsers(@Query("q") String query,
                                                   @Query("page") int page,
-                                                  @Query("per_page") int perPage);
+                                                  @Query("per_page") int perPage,
+                                                  @Header("Authorization") String credentials);
 
     @GET("users/{username}")
     Single<UserInfoResponse> getUserInfo(@Query("username") String userName);

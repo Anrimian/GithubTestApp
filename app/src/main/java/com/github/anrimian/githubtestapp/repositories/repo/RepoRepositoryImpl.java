@@ -30,7 +30,7 @@ public class RepoRepositoryImpl implements RepoRepository {
 
     @Override
     public Single<List<RepoInfoModel>> getRepoInfoList(String userName, String token) {
-        return repoApi.getRepoList("token " + token, userName)
+        return repoApi.getRepoList(token, userName)
                 .map(repoModelMapper::mapUserInfoResponseList);
     }
 }

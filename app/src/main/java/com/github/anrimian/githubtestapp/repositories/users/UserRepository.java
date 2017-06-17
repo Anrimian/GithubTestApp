@@ -13,7 +13,7 @@ import io.reactivex.Single;
 
 public interface UserRepository {
 
-    Single<List<UserSearchResult>> searchUsers(String query, int page, int pageSize);
+    Single<List<UserSearchResult>> searchUsers(String query, int page, int pageSize, String token);
 
     Single<UserInfoModel> getUserInfo(String userName);
 }

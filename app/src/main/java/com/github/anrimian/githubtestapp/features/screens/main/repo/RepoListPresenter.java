@@ -2,7 +2,6 @@ package com.github.anrimian.githubtestapp.features.screens.main.repo;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.github.anrimian.githubtestapp.R;
 import com.github.anrimian.githubtestapp.dagger.Components;
 import com.github.anrimian.githubtestapp.features.screens.main.repo.business.RepoListInteractor;
 import com.github.anrimian.githubtestapp.repositories.repo.models.RepoInfoModel;
@@ -53,7 +52,7 @@ public class RepoListPresenter extends MvpPresenter<RepoListView> {
 
     private void onRepoListLoaded(List<RepoInfoModel> repos) {
         if (repos.isEmpty()) {
-            getViewState().showError(new ErrorInfo(R.string.repo_not_found));
+            getViewState().showEmptyState();
         } else {
             getViewState().showRepoList(repos);
         }
