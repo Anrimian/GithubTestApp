@@ -1,10 +1,12 @@
 package com.github.anrimian.githubtestapp.repositories.users.models;
 
+import java.io.Serializable;
+
 /**
  * Created on 11.06.2017.
  */
 
-public class UserInfoModel {
+public class UserInfoModel implements Serializable{
 
     private long id;
 

@@ -32,6 +32,8 @@
 
         <activity android:name=".features.screens.main.users.screens.user.UserActivity"/>
 
+        <activity android:name=".features.screens.main.profile.screens.edit.EditProfileActivity"/>
+
     </application>
 
 </manifest>

@@ -6,12 +6,16 @@ import com.github.anrimian.githubtestapp.features.screens.auth.business.SignInIn
 import com.github.anrimian.githubtestapp.features.screens.auth.business.SignInInteractorImpl;
 import com.github.anrimian.githubtestapp.features.screens.main.profile.business.ProfileInteractor;
 import com.github.anrimian.githubtestapp.features.screens.main.profile.business.ProfileInteractorImpl;
+import com.github.anrimian.githubtestapp.features.screens.main.profile.screens.edit.business.EditProfileInteractor;
+import com.github.anrimian.githubtestapp.features.screens.main.profile.screens.edit.business.EditProfileInteractorImpl;
 import com.github.anrimian.githubtestapp.features.screens.main.repo.business.RepoListInteractor;
 import com.github.anrimian.githubtestapp.features.screens.main.repo.business.RepoListInteractorImpl;
 import com.github.anrimian.githubtestapp.features.screens.main.users.business.UsersInteractor;
 import com.github.anrimian.githubtestapp.features.screens.main.users.business.UsersInteractorImpl;
 import com.github.anrimian.githubtestapp.features.screens.main.users.screens.user.business.UserInteractor;
 import com.github.anrimian.githubtestapp.features.screens.main.users.screens.user.business.UserInteractorImpl;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -31,6 +35,7 @@ public class BusinessModule {
 
     @Provides
     @NonNull
+    @Singleton
     ProfileInteractor provideProfileInteractor() {
         return new ProfileInteractorImpl();
     }
@@ -51,6 +56,12 @@ public class BusinessModule {
     @NonNull
     UserInteractor provideUserInteractor() {
         return new UserInteractorImpl();
+    }
+
+    @Provides
+    @NonNull
+    EditProfileInteractor provideEditProfileInteractor() {
+        return new EditProfileInteractorImpl();
     }
 
 }

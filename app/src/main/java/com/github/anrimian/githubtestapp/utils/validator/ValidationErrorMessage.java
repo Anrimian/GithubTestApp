@@ -19,6 +19,16 @@ public enum ValidationErrorMessage {
         public int getErrorMessageId() {
             return R.string.empty_password_error;
         }
+    }, EMPTY_NAME {
+        @Override
+        public int getErrorMessageId() {
+            return R.string.empty_name_error;
+        }
+    }, EMPTY_EMAIL {
+        @Override
+        public int getErrorMessageId() {
+            return R.string.empty_email_error;
+        }
     };
 
     public abstract int getErrorMessageId();

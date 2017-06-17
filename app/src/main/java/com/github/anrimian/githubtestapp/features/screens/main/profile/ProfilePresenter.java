@@ -10,6 +10,7 @@ import com.github.anrimian.githubtestapp.utils.errors.ErrorInfo;
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -24,14 +25,31 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
 
     private UserInfoModel userInfoModel;
 
+    private Disposable profileChangingDisposable;
+
     public ProfilePresenter() {
         Components.getAppComponent().inject(this);
+        subscribeOnProfileChanging();
     }
 
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
         loadProfileInfo();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (profileChangingDisposable != null) {
+            profileChangingDisposable.dispose();
+        }
+    }
+
+    private void subscribeOnProfileChanging() {
+        profileChangingDisposable = interactor.getProfileInfoObservable()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onProfileLoaded);
     }
 
     void loadProfileInfo() {
@@ -54,5 +72,9 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
 
     void goToRepoList() {
         getViewState().goToRepoListScreen(userInfoModel.getLogin());
+    }
+
+    void goToEditProfileScreen() {
+        getViewState().goToEditProfileScreen(userInfoModel);
     }
 }

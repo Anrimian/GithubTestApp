@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +18,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
 import com.bumptech.glide.Glide;
 import com.github.anrimian.githubtestapp.R;
+import com.github.anrimian.githubtestapp.features.screens.main.profile.screens.edit.EditProfileActivity;
 import com.github.anrimian.githubtestapp.features.screens.main.repo.RepoListActivity;
 import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
 import com.github.anrimian.githubtestapp.utils.errors.ErrorInfo;
@@ -68,7 +72,15 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     @BindView(R.id.btn_repositories)
     View btnRepos;
 
+    private boolean showOptionsMenu = false;
+
     private ProgressViewBinder progressViewBinder;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Nullable
     @Override
@@ -89,13 +101,36 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        if (showOptionsMenu) {
+            inflater.inflate(R.menu.profile_menu, menu);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_edit_profile: {
+                presenter.goToEditProfileScreen();
+                return true;
+            }
+            default: return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public void showProgress() {
+        showOptionsMenu = false;
+        getActivity().invalidateOptionsMenu();
         profileContentContainer.setVisibility(View.INVISIBLE);
         progressViewBinder.showProgress();
     }
 
     @Override
     public void showError(ErrorInfo errorInfo) {
+        showOptionsMenu = false;
+        getActivity().invalidateOptionsMenu();
         profileContentContainer.setVisibility(View.INVISIBLE);
         String message = errorInfo.getMessage(getContext());
         progressViewBinder.showMessage(message, true);
@@ -103,6 +138,8 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
 
     @Override
     public void showProfile(UserInfoModel userInfoModel) {
+        showOptionsMenu = true;
+        getActivity().invalidateOptionsMenu();
         profileContentContainer.setVisibility(View.VISIBLE);
         progressViewBinder.hideAll();
 
@@ -139,6 +176,13 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     public void goToRepoListScreen(String login) {
         Intent intent = new Intent(getContext(), RepoListActivity.class);
         intent.putExtra(RepoListActivity.USER_NAME, login);
+        startActivity(intent);
+    }
+
+    @Override
+    public void goToEditProfileScreen(UserInfoModel userInfoModel) {
+        Intent intent = new Intent(getContext(), EditProfileActivity.class);
+        intent.putExtra(EditProfileActivity.USER_INFO, userInfoModel);
         startActivity(intent);
     }
 }

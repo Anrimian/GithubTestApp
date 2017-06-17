@@ -6,5 +6,7 @@ package com.github.anrimian.githubtestapp.utils.validator;
 
 public enum Field {
     LOGIN,
+    NAME,
+    EMAIL,
     PASSWORD
 }

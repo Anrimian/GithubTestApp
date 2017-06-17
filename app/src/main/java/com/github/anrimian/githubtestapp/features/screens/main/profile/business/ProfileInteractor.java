@@ -2,6 +2,7 @@ package com.github.anrimian.githubtestapp.features.screens.main.profile.business
 
 import com.github.anrimian.githubtestapp.repositories.users.models.UserInfoModel;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 /**
@@ -11,4 +12,8 @@ import io.reactivex.Single;
 public interface ProfileInteractor {
 
     Single<UserInfoModel> getProfileInfo();
+
+    Observable<UserInfoModel> getProfileInfoObservable();
+
+    void notifyProfileInfoChanged(UserInfoModel userInfoModel);
 }

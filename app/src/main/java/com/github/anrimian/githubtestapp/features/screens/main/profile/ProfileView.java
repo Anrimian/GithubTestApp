@@ -26,4 +26,7 @@ public interface ProfileView extends MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy.class)
     void goToRepoListScreen(String login);
+
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void goToEditProfileScreen(UserInfoModel userInfoModel);
 }

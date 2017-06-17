@@ -34,4 +34,10 @@
     <string name="no_repo">Репозиториев нет</string>
     <string name="users_not_found">Пользователи не найдены</string>
     <string name="no_more_searched_users">Больше пользователей не найдено</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="empty_name_error">Имя не может быть пустым</string>
+    <string name="empty_email_error">Email не может быть пустым</string>
+    <string name="change">Изменить</string>
+    <string name="name">Имя:</string>
+    <string name="email">Email:</string>
 </resources>

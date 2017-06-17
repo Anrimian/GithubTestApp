@@ -8,6 +8,8 @@ import com.github.anrimian.githubtestapp.features.screens.auth.SignInPresenter;
 import com.github.anrimian.githubtestapp.features.screens.auth.business.SignInInteractorImpl;
 import com.github.anrimian.githubtestapp.features.screens.main.profile.ProfilePresenter;
 import com.github.anrimian.githubtestapp.features.screens.main.profile.business.ProfileInteractorImpl;
+import com.github.anrimian.githubtestapp.features.screens.main.profile.screens.edit.EditProfilePresenter;
+import com.github.anrimian.githubtestapp.features.screens.main.profile.screens.edit.business.EditProfileInteractorImpl;
 import com.github.anrimian.githubtestapp.features.screens.main.repo.RepoListPresenter;
 import com.github.anrimian.githubtestapp.features.screens.main.repo.business.RepoListInteractorImpl;
 import com.github.anrimian.githubtestapp.features.screens.main.users.UsersPresenter;
@@ -57,4 +59,8 @@ public interface AppComponent {
     void inject(UserPresenter userPresenter);
 
     void inject(UserInteractorImpl userInteractor);
+
+    void inject(EditProfileInteractorImpl editProfileInteractor);
+
+    void inject(EditProfilePresenter editProfilePresenter);
 }
