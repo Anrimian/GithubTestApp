@@ -6,6 +6,7 @@ import com.github.anrimian.githubtestapp.dataset.retrofit.responses.user.UserInf
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -25,5 +26,6 @@ public interface UsersApi {
                                                   @Header("Authorization") String credentials);
 
     @GET("users/{username}")
-    Single<UserInfoResponse> getUserInfo(@Query("username") String userName);
+    Single<UserInfoResponse> getUserInfo(@Path("username") String userName,
+                                         @Header("Authorization") String credentials);
 }

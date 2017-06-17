@@ -38,8 +38,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Single<UserInfoModel> getUserInfo(String userName) {
-        return usersApi.getUserInfo(userName)
+    public Single<UserInfoModel> getUserInfo(String login, String token) {
+        return usersApi.getUserInfo(login, token)
                 .map(userModelMapper::mapUserInfoResponse);
     }
 }

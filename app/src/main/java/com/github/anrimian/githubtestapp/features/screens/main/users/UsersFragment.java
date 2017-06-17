@@ -1,5 +1,6 @@
 package com.github.anrimian.githubtestapp.features.screens.main.users;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
@@ -19,8 +20,10 @@ import android.widget.Toast;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.github.anrimian.githubtestapp.R;
+import com.github.anrimian.githubtestapp.features.screens.main.users.screens.user.UserActivity;
 import com.github.anrimian.githubtestapp.features.screens.main.users.view.UsersResultListAdapter;
 import com.github.anrimian.githubtestapp.repositories.users.models.UserSearchResult;
+import com.github.anrimian.githubtestapp.utils.AndroidUtils;
 import com.github.anrimian.githubtestapp.utils.AnimationUtils;
 import com.github.anrimian.githubtestapp.utils.errors.ErrorInfo;
 import com.github.anrimian.githubtestapp.utils.recyclerview.endless.EndlessListScrollListener;
@@ -96,12 +99,14 @@ public class UsersFragment extends MvpAppCompatFragment implements UsersView {
         if (!TextUtils.isEmpty(searchQuery)) {
             searchItem.expandActionView();
             searchView.setQuery(searchQuery, false);
+            searchView.clearFocus();
         }
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 presenter.startSearch(query);
+                AndroidUtils.hideKeyboard(getActivity());
                 return true;
             }
 
@@ -214,6 +219,8 @@ public class UsersFragment extends MvpAppCompatFragment implements UsersView {
     }
 
     private void goToUserProfileScreen(UserSearchResult userSearchResult) {
-
+        Intent intent = new Intent(getContext(), UserActivity.class);
+        intent.putExtra(UserActivity.LOGIN, userSearchResult.getLogin());
+        startActivity(intent);
     }
 }

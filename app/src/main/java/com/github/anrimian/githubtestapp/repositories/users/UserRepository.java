@@ -15,5 +15,5 @@ public interface UserRepository {
 
     Single<List<UserSearchResult>> searchUsers(String query, int page, int pageSize, String token);
 
-    Single<UserInfoModel> getUserInfo(String userName);
+    Single<UserInfoModel> getUserInfo(String login, String token);
 }

@@ -3,6 +3,10 @@
 
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="AppTheme.Drawer" parent="AppTheme">
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 </resources>

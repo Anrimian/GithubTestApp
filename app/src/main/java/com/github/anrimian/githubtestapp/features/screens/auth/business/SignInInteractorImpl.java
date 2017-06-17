@@ -42,7 +42,7 @@ public class SignInInteractorImpl implements SignInInteractor {
                 .map(AuthorizationInfo::getToken)
                 .map(token -> "token " + token)
                 .doOnSuccess(preferencesRepository::setToken)
-                //.flatMap(userRepository::getProfileInfo)//TODO first implement user info saving
+                //.flatMap(userRepository::getUserInfo)//TODO first implement user info saving
                 .toCompletable();
     }
 }
