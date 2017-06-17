@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
@@ -57,6 +58,7 @@ public class EditProfileActivity extends MvpAppCompatActivity implements EditPro
         View view = View.inflate(this, R.layout.activity_edit_profile, null);
         setContentView(view);
         ButterKnife.bind(this);
+        setTitle(null);
 
         Toolbar toolbar = ButterKnife.findById(view, R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -73,6 +75,8 @@ public class EditProfileActivity extends MvpAppCompatActivity implements EditPro
 
         progressViewBinder = new SimpleProgressViewBinder(view);
         progressViewBinder.hideAll();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     @Override

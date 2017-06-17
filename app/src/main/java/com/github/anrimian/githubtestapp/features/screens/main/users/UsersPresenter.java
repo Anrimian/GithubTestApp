@@ -112,9 +112,11 @@ public class UsersPresenter extends MvpPresenter<UsersView> {
 
         boolean animate = searchResults.isEmpty() && !newResults.isEmpty();
 
-        newResults.stream()
-                .filter(result -> !searchResults.contains(result))
-                .forEach(searchResults::add);
+        for (UserSearchResult result: newResults) {
+            if (!searchResults.contains(result)) {
+                searchResults.add(result);
+            }
+        }
 
         if (searchResults.isEmpty()) {
             getViewState().showEmptyState();

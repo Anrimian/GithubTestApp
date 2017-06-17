@@ -53,6 +53,7 @@ public class RepoListActivity extends MvpAppCompatActivity implements RepoListVi
         View view = View.inflate(this, R.layout.activity_repo_list, null);
         setContentView(view);
         ButterKnife.bind(this);
+        setTitle(R.string.repo_list_repositories);
 
         Toolbar toolbar = ButterKnife.findById(view, R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -19,7 +19,7 @@
 
     <style name="ToolbarStyle" parent="AppTheme">
         <item name="colorControlNormal">?android:attr/textColorPrimaryInverse</item>
-        <item name="android:editTextColor">?android:attr/textColorPrimaryInverse</item>
+        <item name="editTextColor">?android:attr/textColorPrimaryInverse</item>
     </style>
 
 </resources>

@@ -57,13 +57,11 @@ public class SignInFragment extends MvpAppCompatFragment implements SignInView {
 
         btnSignIn.setOnClickListener(v -> signIn());
 
-        etLogin.setText("Anrimian");//TODO don't forget delete this
         etLogin.setOnEditorActionListener((v, actionId, event) -> {
             etPassword.requestFocus();
             return true;
         });
 
-        etPassword.setText("");//TODO don't forget delete this
         etPassword.setOnEditorActionListener((v, actionId, event) -> {
             signIn();
             return true;
